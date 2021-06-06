@@ -55,10 +55,10 @@ const recaptchaRef = React.createRef();
           }).finally(() => {
             Update_reset_recapcha_(Math.floor(Math.random() * 101))
             try{
-            //   const button = document.getElementById("hide_first")
-            //   button.disabled = true
-            //   button.classList.remove("btn-primary");
-            //   document.getElementById("hide_first").classList.add('btn-secondary');
+              const button = document.getElementById("hide_first")
+              button.disabled = true
+              button.classList.remove("btn-primary");
+              document.getElementById("hide_first").classList.add('btn-secondary');
             }catch(e){
               Updateerrorsetresponse("something went wrong")
             }
@@ -74,7 +74,8 @@ const recaptchaRef = React.createRef();
       // console.log(value)
    }
    
-useEffect(() => {},[_reset_recapcha_]);
+   useEffect(() => {const recaptchaValue = recaptchaRef.current.reset();},[_reset_recapcha_]);
+
 
 return (
   <>
