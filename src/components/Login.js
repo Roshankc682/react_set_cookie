@@ -6,7 +6,7 @@ import axios from 'axios'
 import ReCAPTCHA from "react-google-recaptcha";
 
 const Login = () => {
-  const backend_url = "https://api-v1-backend.herokuapp.com";
+  const backend_url = "http://api-v1-backend.herokuapp.com";
   // const backend_url = "http://localhost:8000";
 const [errorsetresponse, Updateerrorsetresponse] = useState(null);
 const [setJwt, UpdatesetJwt] = useState(null);
