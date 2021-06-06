@@ -16,7 +16,7 @@ const [setJwt, UpdatesetJwt] = useState(null);
           try{
             UpdatesetJwt(null);
             console.log("yes logout")
-            window.location.href = "http://"+window.location.host+"/login";
+            window.location.href = "https://"+window.location.host+"/login";
           }catch(e){
            
             console.log("Errro 1")
@@ -27,7 +27,7 @@ const [setJwt, UpdatesetJwt] = useState(null);
             UpdatesetJwt(null);
             
             console.log("Errro 3")
-            window.location.href = "http://"+window.location.host+"/login";
+            window.location.href = "https://"+window.location.host+"/login";
           }catch(e){
             
             console.log("Errro 4")
