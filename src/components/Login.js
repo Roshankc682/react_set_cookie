@@ -103,7 +103,7 @@ return (
 		  <ReCAPTCHA ref={recaptchaRef} sitekey="6LdjEeQaAAAAACb7HVp1MdIdTR_VbgRqO7hRqUjK" onChange={onChange}/>
 		  <input type="hidden" defaultValue={Math.floor(Math.random() * 101)} name="_pass_value_"/><br/>
 
-      <Button id="hide_first" className="btn btn-secondary" variant="primary" type="submit" >
+      <Button id="hide_first" className="btn btn-secondary" variant="primary" type="submit" disabled>
         Submit
       </Button>
       </Form>
