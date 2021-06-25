@@ -4,8 +4,8 @@ import axios from 'axios'
 
 const Dashboard = () => {
 
-  const backend_url = "https://api-v1-backend.herokuapp.com";
-  // const backend_url = "http://localhost:8000";
+  // const backend_url = "https://api-v1-backend.herokuapp.com";
+  const backend_url = "http://localhost:8000";
   const [setJwt, UpdatesetJwt] = useState(null);
 
   useEffect(() => {
@@ -24,7 +24,30 @@ const Dashboard = () => {
                 }catch(e){}
         })
 },[]);
+useEffect(() => {
+  
+  if(setJwt != null){
+  const interval = setInterval(() => {
+    axios.get(backend_url+'/api/token/new/',{ headers: {'Authorization': `Bearer ${setJwt}`},withCredentials: true})
+        .then((respose) => {
+          // console.log(respose.data)
+          try{
+          UpdatesetJwt(respose.data["access"]);
+          }catch(e)
+          {
+             UpdatesetJwt(null);
+          }
+          
+        })
+        .catch((error) => {
+            // console.log(error)
+            UpdatesetJwt(null);
+        })
+  }, 270000);
+  return () => clearInterval(interval);
+}
 
+}, [setJwt]);
 
 return (
   <>
