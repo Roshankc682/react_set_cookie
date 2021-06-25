@@ -6,8 +6,8 @@ import axios from 'axios'
 import ReCAPTCHA from "react-google-recaptcha";
 
 const Login = () => {
-  const backend_url = "https://api-v1-backend.herokuapp.com";
-  // const backend_url = "http://localhost:8000";
+  // const backend_url = "https://api-v1-backend.herokuapp.com";
+  const backend_url = "http://localhost:8000";
 const [errorsetresponse, Updateerrorsetresponse] = useState(null);
 const [setJwt, UpdatesetJwt] = useState(null);
 const [_reset_recapcha_, Update_reset_recapcha_] = useState(null);
@@ -30,42 +30,45 @@ const recaptchaRef = React.createRef();
           password:password,
           __key__id__ : _pass_value_,
           recapcha : recaptchaValue,
-          url:"http://api-v1-backend.herokuapp.com/api/token/"
+          url:backend_url+"/api/token/"
         }, { withCredentials: true })
         .then((response) => {
           try{
              Updateerrorsetresponse(null)
              UpdatesetJwt(response.data["access"]);
-              
              // console.log(response.data["access"])
              window.location.href = '/home';
           }catch(e){
+            const recaptchaValue = recaptchaRef.current.reset();
             Updateerrorsetresponse("something went wrong")
           }
           })
           .catch(err =>{
+            const recaptchaValue = recaptchaRef.current.reset();
            // console.log(err.response.data.detail)
            try{
            UpdatesetJwt(null);
+           const recaptchaValue = recaptchaRef.current.reset();
            Updateerrorsetresponse(err.response.data.detail)
           }catch(e){
+            const recaptchaValue = recaptchaRef.current.reset();
             Updateerrorsetresponse("something went wrong")
           }
            
           }).finally(() => {
-            Update_reset_recapcha_(Math.floor(Math.random() * 101))
             try{
               const button = document.getElementById("hide_first")
               button.disabled = true
               button.classList.remove("btn-primary");
               document.getElementById("hide_first").classList.add('btn-secondary');
             }catch(e){
-              Updateerrorsetresponse("something went wrong")
+              // Updateerrorsetresponse("something went wrong")
             }
             
             });
 
     }
+
     function onChange(value) {
       const button = document.getElementById("hide_first")
       button.classList.remove("btn-secondary");
@@ -74,7 +77,7 @@ const recaptchaRef = React.createRef();
       // console.log(value)
    }
    
-   useEffect(() => {const recaptchaValue = recaptchaRef.current.reset();},[_reset_recapcha_]);
+ 
 
 
 return (
