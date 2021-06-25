@@ -5,9 +5,9 @@ import './Form.css';
 import axios from 'axios'
 
 const Logout = () => {
-  const backend_url = "https://api-v1-backend.herokuapp.com";
-  // const backend_url = "http://localhost:8000";
-   
+  // const backend_url = "https://api-v1-backend.herokuapp.com";
+  const backend_url = "http://localhost:8000";
+  const front_end = "http://localhost:3000";  
 const [setJwt, UpdatesetJwt] = useState(null);
 
  useEffect(() => {
@@ -16,7 +16,7 @@ const [setJwt, UpdatesetJwt] = useState(null);
           try{
             UpdatesetJwt(null);
             console.log("yes logout")
-            window.location.href = "https://"+window.location.host+"/login";
+            window.location.href = front_end+"/login";
           }catch(e){
            
             console.log("Errro 1")
