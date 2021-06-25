@@ -8,8 +8,8 @@ import ReCAPTCHA from "react-google-recaptcha";
 const Signup = () => {
 
 
-const backend_url = "https://api-v1-backend.herokuapp.com";
-// const backend_url = "http://localhost:8000";
+// const backend_url = "https://api-v1-backend.herokuapp.com";
+const backend_url = "http://localhost:8000";
 const [setresponse, Updatesetresponse] = useState("");
 const [errorsetresponse, Updateerrorsetresponse] = useState("");
 const [_reset_recapcha_, Update_reset_recapcha_] = useState(null);
@@ -118,7 +118,7 @@ return (
 		  <ReCAPTCHA ref={recaptchaRef} sitekey="6LdjEeQaAAAAACb7HVp1MdIdTR_VbgRqO7hRqUjK" onChange={onChange}/>
 		  <input type="hidden" defaultValue={Math.floor(Math.random() * 101)} name="_pass_value_"/><br/>
 		  
-		  <Button id="hide_first" className="btn btn-secondary" variant="primary" type="submit"disabled >
+		  <Button id="hide_first" className="btn btn-secondary" variant="primary" type="submit" disabled >
 		    Register
 		  </Button>
       </Form>
